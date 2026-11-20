@@ -1,2 +1,2 @@
-# Ignore this folder and all files inside
-gitignore-files/
+# Ignore git-ignore-files directories and their contents at any repository depth
+git-ignore-files/
