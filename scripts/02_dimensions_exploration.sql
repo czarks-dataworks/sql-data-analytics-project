@@ -19,10 +19,14 @@ SELECT DISTINCT
     gender
 FROM gold.dim_customers;
 
--- Explore all categories, the "major divisions"
+-- Explore all categories ("major divisions") and their earliest start date
 SELECT DISTINCT
-    category
-FROM gold.dim_products;
+    category,
+    YEAR(MIN(start_date)) AS start_year,
+    MIN(start_date) AS start_date
+FROM gold.dim_products
+GROUP BY category
+ORDER BY MIN(start_date);
 
 -- Retrieve a list of unique categories and subcategories (overview of categories)
 SELECT DISTINCT 
