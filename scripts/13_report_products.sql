@@ -5,14 +5,17 @@
   Highlights:
     1. Gathers essential fields such as product name, category, subcategory,
        and cost.
-    2. Segments products by revenue to identify High-Performers, Mid-Range, 
-       or Low-Performers.
+    2. Segments products by revenue:
+       - High-Performer: total sales > 50,000
+       - Mid-Range: total sales 10,000 to 50,000
+       - Low-Performer: total sales < 10,000
     3. Aggregates product-level metrics:
        - Total orders
        - Total sales
        - Total quantity sold
        - Total customers (unique)
-       - Lifespan (in months)
+	   - Lifespan (in months; DATEDIFF counts month boundaries crossed,
+	     not full months)
     4. Calculates valuable KPIs:
        - Recency (months since last sale)
        - Average order revenue (AOR)
@@ -63,7 +66,7 @@ SELECT
 	COUNT(DISTINCT customer_key) AS total_customers,
     SUM(sales_amount) AS total_sales,
     SUM(quantity) AS total_quantity,
-	ROUND(AVG(CAST(sales_amount AS FLOAT) / NULLIF(quantity, 0)),1)
+	CAST(1.0 * AVG(sales_amount / NULLIF(quantity, 0)) AS DECIMAL(18, 2))
         AS avg_selling_price
 FROM base_query
 GROUP BY
@@ -83,7 +86,7 @@ SELECT
 	subcategory,
 	cost,
 	last_sale_date,
-	DATEDIFF(MONTH, last_sale_date, GETDATE()) AS recency_in_months,
+	DATEDIFF(MONTH, last_sale_date, CAST(GETDATE() AS DATE)) AS recency_in_months,
 	CASE
 		WHEN total_sales > 50000 THEN 'High-Performer'
 		WHEN total_sales >= 10000 THEN 'Mid-Range'
@@ -111,7 +114,7 @@ FROM product_aggregations;
 -- the column named in each observation.
 
 /*
-SELECT *
+SELECT TOP 25 *
 FROM gold.report_products
 ORDER BY total_sales DESC;
 */
@@ -135,3 +138,4 @@ ORDER BY total_orders DESC;
 --    4,244 orders and 4,249 units, but its total_sales is only 21,245.
 --    Implication: High order volume does not mean high revenue. Low-priced
 --    accessories raise order counts but contribute little to sales.
+

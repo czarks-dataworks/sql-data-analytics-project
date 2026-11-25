@@ -4,13 +4,17 @@
  
   Highlights:
 	1. Gathers essential fields such as names, ages, and transaction details.
-	2. Segments customers into categories (VIP, Regular, New) and age groups.
+	2. Segments customers into categories and age groups:
+	   - VIP: lifespan >= 12 months and total sales > 5,000
+	   - Regular: lifespan >= 12 months and total sales <= 5,000
+	   - New: lifespan < 12 months
 	3. Aggregates customer-level metrics:
        - Total orders
  	   - Total sales
  	   - Total quantity purchased
  	   - Total products
-	   - Lifespan (in months)
+	   - Lifespan (in months; DATEDIFF counts month boundaries crossed,
+	     not full months)
 	4. Calculates valuable KPIs:
 	   - Recency (months since last order)
 	   - Average order value
@@ -39,9 +43,23 @@ SELECT
 	c.customer_key,
 	c.customer_number,
 	CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+	-- Age = completed years as of the run date (same rule as script 03).
+	-- DATEDIFF(YEAR) alone counts year boundaries crossed, so subtract 1 if
+	-- this year's birthday has not yet happened.
 	DATEDIFF(YEAR, c.birthdate, CAST(GETDATE() AS DATE)) -
-		CASE WHEN DATEADD(YEAR, DATEDIFF(YEAR, c.birthdate, 
-		CAST(GETDATE() AS DATE)), c.birthdate) > CAST(GETDATE() AS DATE) THEN 1
+		CASE WHEN 
+			CASE
+				-- Feb. 29 birthdates: Use March 1 if the current year
+				-- is not a leap year (same handling as script 03)
+				WHEN MONTH(c.birthdate) = 2 AND DAY(c.birthdate) = 29
+					AND NOT ((YEAR(GETDATE()) % 4 = 0
+						AND YEAR(GETDATE()) % 100 <> 0)
+						OR YEAR(GETDATE()) % 400 = 0)
+				THEN DATEFROMPARTS(YEAR(GETDATE()), 3, 1)
+				ELSE DATEFROMPARTS(YEAR(GETDATE()), MONTH(c.birthdate),
+					DAY(c.birthdate))
+			END > CAST(GETDATE() AS DATE)
+		THEN 1
 		ELSE 0 END AS age
 FROM gold.fact_sales f
 LEFT JOIN gold.dim_customers c
