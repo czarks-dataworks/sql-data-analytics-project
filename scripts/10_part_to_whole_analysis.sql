@@ -32,7 +32,7 @@ SELECT
 FROM category_sales
 ORDER BY total_sales DESC;
 
--- >> Observation 11.1 [Product]: Bikes account for most of the sales.
+-- >> Observation 10.1 [Product]: Bikes account for most of the sales.
 --    Evidence: Bikes total_sales is 28,316,272, which is 96.46% of
 --    overall_sales (29,356,250). Accessories contribute 2.39% (700,262) and
 --    Clothing 1.16% (339,716).
@@ -40,7 +40,7 @@ ORDER BY total_sales DESC;
 --    Bikes category, which makes the business dependent on a single
 --    category.
 --
--- >> Observation 11.2 [Product]: Accessories contribute more than twice as
+-- >> Observation 10.2 [Product]: Accessories contribute more than twice as
 --    much as Clothing.
 --    Evidence: Accessories total_sales is 700,262 against 339,716 for
 --    Clothing (2.39% vs 1.16% of overall_sales).

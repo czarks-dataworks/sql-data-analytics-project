@@ -45,8 +45,8 @@ SELECT
 FROM gold.fact_sales
 GROUP BY DATETRUNC(year, COALESCE(order_date, DATEADD(DAY, -7, shipping_date)));
 
--- >> Observation 8.1 [Growth]: 2013 added more sales than all earlier years
---    combined.
+-- >> Observation 8.1 [Growth]: 2013 sales alone exceeded the sales of all
+--    earlier years combined.
 --    Evidence: running_total_sales was 12,960,738 at the end of 2012 and
 --    29,310,608 at the end of 2013. total_sales for 2013 alone was
 --    16,349,870.

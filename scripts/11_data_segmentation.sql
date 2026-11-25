@@ -38,7 +38,7 @@ ORDER BY total_products DESC;
 -- Check results: The total of total_products should be equal to 295
 -- -> Correct.
 
--- >> Observation 10.1 [Product]: Most products fall in the two lowest cost
+-- >> Observation 11.1 [Product]: Most products fall in the two lowest cost
 --    ranges.
 --    Evidence: total_products is 110 for Below 100 and 101 for 100 to <500,
 --    against 45 for 500 to <1000 and 39 for 1000 and above.
@@ -48,11 +48,14 @@ ORDER BY total_products DESC;
 /*
 Group customers into three segments based on their spending behavior:
     - VIP: Customers with at least 12 months of history
-           and spending more than €5,000.
+           and spending more than 5,000.
 	- Regular: Customers with at least 12 months of history 
-           but spending €5,000 or less.
+           but spending 5,000 or less.
 	- New: Customers with a lifespan less than 12 months.
 And find the total number of customers by each group
+
+Note: Lifespan = months between first and last order using DATEDIFF(MONTH),
+which counts month boundaries crossed, not full months.
 */
 
 WITH customer_spending AS (
@@ -85,7 +88,7 @@ FROM segmented_customers
 GROUP BY customer_segment
 ORDER BY customer_segment;
 
--- >> Observation 10.2 [Customer]: Most customers are in the New segment, and
+-- >> Observation 11.2 [Customer]: Most customers are in the New segment, and
 --    VIPs are the smallest group.
 --    Evidence: total_customers is 14,631 for c) New, 2,198 for b) Regular and
 --    1,655 for a) VIP.

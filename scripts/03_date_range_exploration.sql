@@ -64,7 +64,8 @@ FROM gold.dim_customers
 SELECT
     oldest_birthdate,
     CASE
--- The next 4 lines handle Feb. 29 birthdates if year today is not a leap year
+        -- The next 4 lines handle Feb. 29 birthdates:
+        -- Use March 1 if current year is not a leap year.
         WHEN MONTH(oldest_birthdate) = 2 AND DAY(oldest_birthdate) = 29
             AND NOT ((YEAR(date_today) % 4 = 0 AND YEAR(date_today) % 100 <> 0)
             OR YEAR(date_today) % 400 = 0)
@@ -74,7 +75,8 @@ SELECT
     END AS ob_this_year,
     youngest_birthdate,
     CASE
--- The next 4 lines handle Feb. 29 birthdates if year today is not a leap year
+        -- The next 4 lines handle Feb. 29 birthdates:
+        -- Use March 1 if current year is not a leap year.
         WHEN MONTH(youngest_birthdate) = 2 AND DAY(youngest_birthdate) = 29
             AND NOT ((YEAR(date_today) % 4 = 0 AND YEAR(date_today) % 100 <> 0)
             OR YEAR(date_today) % 400 = 0)

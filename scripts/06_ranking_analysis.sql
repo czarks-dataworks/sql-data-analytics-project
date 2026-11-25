@@ -85,6 +85,8 @@ GROUP BY
 ORDER BY total_revenue DESC;
 
 -- Find the 3 customers with the fewest orders placed
+-- Note: Many customers are tied at the minimum of 1 order, so these 3 rows
+-- are an arbitrary sample of the tied customers, not a true bottom 3.
 SELECT TOP 3
     c.customer_key,
     c.first_name,

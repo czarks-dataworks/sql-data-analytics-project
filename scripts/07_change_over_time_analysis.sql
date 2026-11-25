@@ -61,15 +61,17 @@ ORDER BY p.category, order_year;
 --    Implication: The business sold only one category until 2012, and
 --    revenue stays heavily concentrated in Bikes afterwards.
 --
--- >> Observation 7.3.1 [Data Quality]: Bikes have sales in 2010, and yet were
---    not sold until July 1, 2011. 
---    Evidence: Exploration of product categories with their start dates in the
---    script 02_dimensions_exploration.sql show the following:
---    Components - 2003, Bikes - 2011, Clothing - 2011, and Accessories - 2012.
---    Implication: Either the sales records are overstated or the product
---    information is incomplete. Until resolved, 2010 Bike figures and any
---    trend that includes them, including 2010 sales which is composed of bikes
---    only, should be treated with caution.
+-- >> Observation 7.3.1 [Data Quality]: Bikes have sales before their
+--    recorded start date.
+--    Evidence: In script 02, the earliest Bikes start_date is July 1, 2011
+--    (category-start years: Components-2003, Bikes-2011, Clothing-2011,
+--    Accessories-2012). Yet Bikes have sales on Dec 29-31, 2010, and sales
+--    in 2011 begin on January 1 (see Observation 3.2), six months before
+--    that date.
+--    Implication: Either the sales records are overstated or start_date does
+--    not mark when a product was launched or first sold. Bike figures before
+--    July 2011 should be treated with caution. This affects the 2010 total and
+--    the first half of 2011, the baseline year for growth comparisons.
 --
 -- >> Observation 7.4 [Growth]: Bike sales fell in 2012 and then more than
 --    doubled in 2013.
@@ -139,12 +141,14 @@ ORDER BY order_year, order_month;
 
 -- >> Observation 7.8 [Seasonality]: The December peak and the February low
 --    are consistent in most years, but not in all.
---    Evidence: December ranked 1st in 2012 and 2013 and 3rd in 2011 (June
---    was the peak that year). February ranked 12th in 2011 and 2013 but 6th
---    in 2012, when May was the lowest month (358,866). June ranked 1st, 2nd
---    and 4th across the three years.
+--    Evidence: December ranked 1st in 2012 and 2013 and 3rd in 2011 (June was
+--    the peak that year). February ranked 12th in 2011 and 2013 but 6th in
+--    2012, when May was the lowest month (358,866). June ranked 1st, 2nd and
+--    4th across the three years.
 --    Implication: December strength and a January-February slowdown are a
---    likely pattern, with only three years of data to support it.
+--    likely pattern, with only three years of data to support it. Pooled totals
+--    are weighted toward 2013, the largest year, and sales grew within 2013 
+--    (see Observation 7.10), so growth may account for part of the pattern.
 
 -- DATETRUNC(): Year and month combined in one column.
 SELECT
