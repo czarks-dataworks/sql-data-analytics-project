@@ -39,7 +39,7 @@ ORDER BY total_customers DESC;
 -- (not included in the guided project)
 SELECT
     gender,
-    COUNT(c.customer_key) AS total_customers,
+    COUNT(DISTINCT c.customer_key) AS total_customers,
     COUNT(DISTINCT f.order_number) AS total_orders,
     SUM(f.sales_amount) AS total_sales
 FROM gold.dim_customers c
