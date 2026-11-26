@@ -2,28 +2,28 @@
 
 ### Table of Contents
 
-- [Overview](#-overview)
-- [Skills Demonstrated](#️-skills-demonstrated)
-- [Project Brief](#-project-brief)
-- [Data Pipeline Context](#️-data-pipeline-context)
-- [Analysis Roadmap](#️-analysis-roadmap)
-- [Output Examples](#-output-examples)
-- [Key Business Findings & Recommendations](#-key-business-findings--recommendations)
-- [Data Quality & Validation](#️-data-quality--validation)
-- [Repository Structure & Setup Guide](#️-repository-structure--setup-guide)
-- [Credits & Enhancements](#-credits--enhancements)
-- [License](#-license)
-- [About Me](#-about-me)
+&emsp; 📌 [Overview](#-overview) \
+&emsp; 🛠️ [Skills Demonstrated](#️-skills-demonstrated) \
+&emsp; 🎯 [Project Brief](#-project-brief) \
+&emsp; 🏗️ [Data Pipeline Context](#️-data-pipeline-context) \
+&emsp; 🛣️ [Analysis Roadmap](#️-analysis-roadmap) \
+&emsp; 💻 [Output Examples](#-output-examples) \
+&emsp; 📈 [Key Business Findings & Recommendations](#-key-business-findings--recommendations) \
+&emsp; 🛡️ [Data Quality & Validation](#️-data-quality--validation) \
+&emsp; ⚙️ [Repository Structure & Setup Guide](#️-repository-structure--setup-guide) \
+&emsp; ✨ [Credits & Enhancements](#-credits--enhancements) \
+&emsp; 📜 [License](#-license) \
+&emsp; 👩🏻‍💻 [About Me](#-about-me) 
 
-💡 **Tip:** On GitHub, you can use the **Outline** button (☰) at the top right of this README to jump to any section.
+💡 **Tip:** On the GitHub repository page, you can use the **Outline** button (☰) at the top right of this README to jump to any section.
 
 ## 📌 Overview
 
-This is an **exploratory data analysis (EDA)** and **advanced analytics reporting project** built on a retail business dataset using **Microsoft SQL Server (T-SQL)**. Analysis progresses from schema, data, and data-quality inspection to ranking, time-series, segmentation, and part-to-whole analysis, and culminates in the creation of two reusable reports designed for business intelligence (BI) use.
+This is an **exploratory data analysis (EDA)** and **advanced analytics reporting project** built on a retail business dataset using **Microsoft SQL Server (T-SQL)**. Analysis progresses from schema, data, and data-quality inspection to ranking, time-series, part-to-whole analysis,and segmentation, and culminates in the creation of two reusable reports designed for business intelligence (BI) use.
 
 <div align="center">
 
-| Dataset at a Glance | |
+| Dataset at a Glance | # |
 | :--- | ---: |
 | **👥 Customers** | 18,484 |
 | **📦 Products** | 295 |
@@ -34,15 +34,15 @@ This is an **exploratory data analysis (EDA)** and **advanced analytics reportin
 
 This project also answers **business questions:** business observations at various stages of the analysis were recorded in the SQL scripts, with corresponding recommendations presented in this document, summarized in [Key Business Findings & Recommendations](#-key-business-findings--recommendations).
 
-This repository is the analytics complement to **[my SQL Data Warehouse Project](https://github.com/czarks-dataworks/sql-data-warehouse-project "Go to GitHub repository")** (see [Data Pipeline Context](#️-data-pipeline-context) for the flow of data) and follows the guided **[SQL Data Analytics Project by Data With Baraa](https://github.com/DataWithBaraa/sql-data-analytics-project "Go to GitHub repository")** (see [Credits & Enhancements](#-credits--enhancements) for my revisions and additions).
+This repository is the analytics complement to my **[SQL Data Warehouse Project](https://github.com/czarks-dataworks/sql-data-warehouse-project "Go to GitHub repository (czarks-dataworks)")** (see [Data Pipeline Context](#️-data-pipeline-context) for the flow of data) and follows the guided **[SQL Data Analytics Project by Data With Baraa](https://github.com/DataWithBaraa/sql-data-analytics-project "Go to GitHub repository")** (see [Credits & Enhancements](#-credits--enhancements) for my revisions and additions).
 
 ## 🛠️ Skills Demonstrated
 
-T-SQL · Schema & Domain Profiling · EDA · CTEs & Modular Query Structure · Conditional Logic · Window Functions · Time-series and Cumulative Analysis · Year-Over-Year Analysis · Customer and Product Segmentation · Part-to-Whole Analysis · Reusable KPI Reporting Views · Data Quality Checks · Business Insight Writing
+T-SQL · Schema & Domain Profiling · EDA · CTEs & Modular Query Structure · Conditional Logic · Window Functions · Time-series and Cumulative Analysis · Year-Over-Year Analysis · Part-to-Whole Analysis · Customer and Product Segmentation · Reusable KPI Reporting Views · Data Quality Checks · Business Insight Writing
 
-## 💎 Project Brief
+## 🎯 Project Brief
 
-### Objective
+**Objective**
 
 Develop BI-ready, SQL-based analytics to deliver detailed insights into:
 
@@ -50,17 +50,17 @@ Develop BI-ready, SQL-based analytics to deliver detailed insights into:
 - 🚲 Product Performance
 - 📈 Sales Trends
 
-### Specifications
+**Specifications**
 
 - **Data source:** The Gold layer of the SQL Data Warehouse Project, provided as the `DataWarehouse.bak` database backup.
 - **Data quality:** Check data coverage and date quality before analysis, and document how each issue was handled.
 - **Reporting:** Consolidate customer and product metrics into two reusable views designed for BI tools.
 - **Documentation:** Record business observations (finding, evidence, implication) in the scripts, and summarize them in this README.
 
-### Outputs
+**Outputs**
 
 - **Exploratory data analysis (EDA):** Profiling the database structure, dimensions, date ranges, and key measures, and ranking customers and products
-- **Advanced analytics:** Change over time, cumulative totals, year-over-year performance, segmentation, and part-to-whole analysis
+- **Advanced analytics:** Change over time, cumulative totals, year-over-year performance, part-to-whole analysis, and segmentation
 - **Reporting views:** Two reusable views that consolidate customer and product metrics for BI
 - **Business insights and recommendations:** Observations arising from the analysis, evidence and implications of those observations, and resulting business recommendations
 
@@ -80,22 +80,20 @@ This project sits downstream of the [SQL Data Warehouse Project (DWP)](https://g
 
 ### Database Views
 
-#### Inputs: `DataWarehouse` Gold Layer (Star Schema)
+**Inputs: `DataWarehouse` Gold Layer (Star Schema)**
 
-Built in the DWP.
+Dimension (`dim`) and fact (`fact`) tables built in the DWP:
 
-- **Dimensions**
-  - `gold.dim_customers`: Customer profiles and demographics (country, gender, marital status, birthdate).
-  - `gold.dim_products`: Product catalog (category, subcategory, cost, start date).
-- **Facts**
-  - `gold.fact_sales`: Transaction-level sales with order, shipping, and due dates, price, quantity, sales amount, and keys to the dimensions.
+- `gold.dim_customers`: Customer profiles and demographics (country, gender, marital status, birthdate)
+- `gold.dim_products`: Product catalog (category, subcategory, cost, start date)
+- `gold.fact_sales`: Transaction-level sales with order, shipping, and due dates, price, quantity, sales amount, and keys to the dimensions
 
-#### Outputs: Reporting Views Added to the `DataWarehouse` Gold Layer
+**Outputs: Reporting Views Added to the `DataWarehouse` Gold Layer**
 
-Created in this project (scripts 12 and 13).
+Created in this project (scripts 12 and 13):
 
-- `gold.report_customers`: One row per customer, with age group, customer segment, recency, lifespan, average order value, and average monthly spend. Segments: **VIP** (lifespan of 12+ months and total sales above 5,000), **Regular** (lifespan of 12+ months and total sales of 5,000 or less), **New** (lifespan under 12 months).
-- `gold.report_products`: One row per product, with product segment, recency, lifespan, average selling price, average order revenue, and average monthly revenue. Segments: **High-Performer** (total sales above 50,000), **Mid-Range** (10,000 to 50,000), **Low-Performer** (below 10,000).
+- `gold.report_customers`: One row per customer, with age group, customer segment, recency, lifespan, average order value, and average monthly spend. Segments: **VIP** (lifespan of 12+ months and total sales above 5,000), **Regular** (lifespan of 12+ months and total sales of 5,000 or less), **New** (lifespan under 12 months)
+- `gold.report_products`: One row per product, with product segment, recency, lifespan, average selling price, average order revenue, and average monthly revenue. Segments: **High-Performer** (total sales above 50,000), **Mid-Range** (10,000 to 50,000), **Low-Performer** (below 10,000)
 
 ℹ️ **Note:** *Lifespan* is the number of months between a customer's or product's first and last order, calculated with `DATEDIFF(MONTH, ...)`. It counts month boundaries crossed, not full elapsed months, so orders on January 31 and February 1 give a lifespan of 1. When lifespan is 0, average monthly spend (customers) or revenue (products) equals total sales.
 
@@ -124,7 +122,7 @@ The diagram above presents the project roadmap from the course, with minor modif
 
 <p align="right"><a href="#sql-data-analytics-project">↑ Back to top</a></p>
 
-## 📊 Output Examples
+## 💻 Output Examples
 
 🔔 **Reminder:** SQL scripts can only run correctly after the **[full setup](#️-repository-structure--setup-guide)** is completed.
 
@@ -342,47 +340,49 @@ Together with the Customer Report, the Product Report is the culmination of this
 
 Each finding below is supported by observations in the SQL scripts, written in the format *observation, evidence, implication*. The evidence (figures and query results) is in the referenced script, appearing after the query that produced it.
 
-### 1. Revenue is concentrated in one category
+### Key Business Findings
 
-- **Finding:** Bikes account for about 96% of total sales. Accessories and Clothing together contribute about 3.5%, and Accessories contribute more than twice as much as Clothing. Bikes were the only category sold until 2012; Accessories and Clothing grew quickly after they first appeared, but from very small bases. Separately, by product count the catalog is weighted toward low-cost items.
-- **Business implication:** Performance is driven almost entirely by Bikes. Neither of the smaller categories materially offsets that dependence, even after their rapid growth in 2013.
-- **Evidence:** `10_part_to_whole_analysis.sql` (Observations 10.1 and 10.2), `07_change_over_time_analysis.sql` (Observations 7.3 and 7.5), `11_data_segmentation.sql` (Observation 11.1).
+1. **Revenue is concentrated in one category**
 
-### 2. Growth was uneven and driven by 2013
+    - **Finding:** Bikes account for about 96% of total sales. Accessories and Clothing together contribute about 3.5%, and Accessories contribute more than twice as much as Clothing. Bikes were the only category sold until 2012; Accessories and Clothing grew quickly after they first appeared, but from very small bases. Separately, by product count the catalog is weighted toward low-cost items.
+    - **Business implication:** Performance is driven almost entirely by Bikes. Neither of the smaller categories materially offsets that dependence, even after their rapid growth in 2013.
+    - **Evidence:** `10_part_to_whole_analysis.sql` (Observations 10.1 and 10.2), `07_change_over_time_analysis.sql` (Observations 7.3 and 7.5), `11_data_segmentation.sql` (Observation 11.1).
 
-- **Finding:** Sales fell in 2012 and then more than doubled in 2013. The 2012 dip came from the Bikes category itself. 2013 sales were higher than 2012 in every month, so the growth was spread across the year, and the 2013 sales alone exceeded the combined sales of all earlier years.
-- **Business implication:** Overall results depend heavily on 2013. With only three full years of data, growth statements should be treated as indicative, not as an established trend.
-- **Evidence:** `07_change_over_time_analysis.sql` (Observations 7.1, 7.4, and 7.10), `08_cumulative_analysis.sql` (Observations 8.1 and 8.2).
+2. **Growth was uneven and driven by 2013**
 
-### 3. The 2012 dip came from lower revenue per customer and a changing product mix, not from lost customers
+    - **Finding:** Sales fell in 2012 and then more than doubled in 2013. The 2012 dip came from the Bikes category itself. 2013 sales were higher than 2012 in every month, so the growth was spread across the year, and the 2013 sales alone exceeded the combined sales of all earlier years.
+    - **Business implication:** Overall results depend heavily on 2013. With only three full years of data, growth statements should be treated as indicative, not as an established trend.
+    - **Evidence:** `07_change_over_time_analysis.sql` (Observations 7.1, 7.4, and 7.10), `08_cumulative_analysis.sql` (Observations 8.1 and 8.2).
 
-- **Finding:** Customers and orders grew every year, including 2012, so each customer and each order brought in less revenue. No product with sales in both 2011 and 2012 declined, but several of the highest-selling 2011 models (the Road-150 Red and Mountain-100 models) have no sales after 2011, and the top 2012 models sold far less than the top 2011 models.
-- **Business implication:** The dip is consistent with top-selling models leaving the range, not with declines in continuing products or a shrinking customer base.
-- **Evidence:** `07_change_over_time_analysis.sql` (Observation 7.2), `09_performance_analysis.sql` (Observations 9.1, 9.2, 9.5, and 9.6).
+3. **The 2012 dip came from lower revenue per customer and a changing product mix, not from lost customers**
 
-### 4. Product leadership rotates between model lines
+    - **Finding:** Customers and orders grew every year, including 2012, so each customer and each order brought in less revenue. No product with sales in both 2011 and 2012 declined, but several of the highest-selling 2011 models (the Road-150 Red and Mountain-100 models) have no sales after 2011, and the top 2012 models sold far less than the top 2011 models.
+    - **Business implication:** The dip is consistent with top-selling models leaving the range, not with declines in continuing products or a shrinking customer base.
+    - **Evidence:** `07_change_over_time_analysis.sql` (Observation 7.2), `09_performance_analysis.sql` (Observations 9.1, 9.2, 9.5, and 9.6).
 
-- **Finding:** The top sellers change by year: Road-150 Red models in 2011, Mountain-200 and Road-250 models in 2012, and Mountain-200 models in the top six places in 2013. The same Mountain-200 models also lead total sales over the whole period and scaled from little or no sales in 2011 to the top ranks within two years. Nearly every product with sales in both 2012 and 2013 increased (three Road-250 models declined), but the largest increases came from Mountain-200 models.
-- **Business implication:** Performance depends on whichever model line is currently leading, so the rebound in 2013 rested on one line more than on the whole range.
-- **Evidence:** `09_performance_analysis.sql` (Observations 9.3, 9.7, 9.8, 9.9, and 9.10), `13_report_products.sql` (Observation 13.1).
+4. **Product leadership rotates between model lines**
 
-### 5. Order volume does not translate into revenue
+    - **Finding:** The top sellers change by year: Road-150 Red models in 2011, Mountain-200 and Road-250 models in 2012, and Mountain-200 models in the top six places in 2013. The same Mountain-200 models also lead total sales over the whole period and scaled from little or no sales in 2011 to the top ranks within two years. Nearly every product with sales in both 2012 and 2013 increased (three Road-250 models declined), but the largest increases came from Mountain-200 models.
+    - **Business implication:** Performance depends on whichever model line is currently leading, so the rebound in 2013 rested on one line more than on the whole range.
+    - **Evidence:** `09_performance_analysis.sql` (Observations 9.3, 9.7, 9.8, 9.9, and 9.10), `13_report_products.sql` (Observation 13.1).
 
-- **Finding:** The most-ordered product, the 30 oz. water bottle, has a very low total sales figure. In early 2013, orders and units more than doubled from January to February while sales fell. The running average of yearly average prices fell steadily after 2011.
-- **Business implication:** Order counts do not track sales, so sales is the better measure of growth. Low-priced accessories raise order counts without contributing much revenue, and the growth did not come from higher average prices.
-- **Evidence:** `13_report_products.sql` (Observation 13.2), `07_change_over_time_analysis.sql` (Observation 7.11), `08_cumulative_analysis.sql` (Observation 8.3).
+5. **Order volume does not translate into revenue**
 
-### 6. Most customers are new, and spend does not follow order frequency
+    - **Finding:** The most-ordered product, the 30 oz. water bottle, has a very low total sales figure. In early 2013, orders and units more than doubled from January to February while sales fell. The running average of yearly average prices fell steadily after 2011.
+    - **Business implication:** Order counts do not track sales, so sales is the better measure of growth. Low-priced accessories raise order counts without contributing much revenue, and the growth did not come from higher average prices.
+    - **Evidence:** `13_report_products.sql` (Observation 13.2), `07_change_over_time_analysis.sql` (Observation 7.11), `08_cumulative_analysis.sql` (Observation 8.3).
 
-- **Finding:** Most customers have a lifespan of less than 12 months (the New segment), and VIPs are the smallest group. The highest-spending customers are VIPs with only a few orders each, while the most frequent buyers spend far less and can still be classified as New.
-- **Business implication:** Top customer spend comes from a small number of high-value orders, not from frequent purchasing. Because segments depend on lifespan and total sales, order frequency alone does not identify high-value customers.
-- **Evidence:** `11_data_segmentation.sql` (Observation 11.2), `12_report_customers.sql` (Observations 12.1 and 12.2).
+6. **Most customers are new, and spend does not follow order frequency**
 
-### 7. Demand appears seasonal, with limited history to confirm it
+    - **Finding:** Most customers have a lifespan of less than 12 months (the New segment), and VIPs are the smallest group. The highest-spending customers are VIPs with only a few orders each, while the most frequent buyers spend far less and can still be classified as New.
+    - **Business implication:** Top customer spend comes from a small number of high-value orders, not from frequent purchasing. Because segments depend on lifespan and total sales, order frequency alone does not identify high-value customers.
+    - **Evidence:** `11_data_segmentation.sql` (Observation 11.2), `12_report_customers.sql` (Observations 12.1 and 12.2).
 
-- **Finding:** Pooled across 2011 to 2013, December is the highest sales month and February the lowest. November, June, and October follow December, and January to March are the weakest months. The pattern is consistent in most years but not all: December ranked third in 2011, and February ranked sixth in 2012.
-- **Business implication:** December strength and a slow start to the year are likely patterns, but three years of data are too few to treat them as established. The pooled ranking is also weighted toward 2013, the largest year, and sales grew within 2013 itself (January 857,758 vs December 1,874,128), so part of the December high and early-year low may reflect growth rather than seasonality.
-- **Evidence:** `07_change_over_time_analysis.sql` (Observations 7.7, 7.8, and 7.10).
+7. **Demand appears seasonal, with limited history to confirm it**
+
+    - **Finding:** Pooled across 2011 to 2013, December is the highest sales month and February the lowest. November, June, and October follow December, and January to March are the weakest months. The pattern is consistent in most years but not all: December ranked third in 2011, and February ranked sixth in 2012.
+    - **Business implication:** December strength and a slow start to the year are likely patterns, but three years of data are too few to treat them as established. The pooled ranking is also weighted toward 2013, the largest year, and sales grew within 2013 itself (January 857,758 vs December 1,874,128), so part of the December high and early-year low may reflect growth rather than seasonality.
+    - **Evidence:** `07_change_over_time_analysis.sql` (Observations 7.7, 7.8, and 7.10).
 
 ### Business and Data Analysis Recommendations
 
@@ -397,6 +397,8 @@ Each finding below is supported by observations in the SQL scripts, written in t
 5. **Identify high-value customers by spend and tenure, not order frequency.** The top spenders place few, high-value orders, and the most frequent buyers spend far less. Use total sales and lifespan to find high-value customers, and look at what could move the large New segment toward Regular or VIP. *(Finding 6)*
 
 6. **Avoid projecting 2013 growth forward.** Overall results depend heavily on 2013, and only three full years are available. Treat 2013 as one strong year, not as a trend, in forecasts and targets. *(Finding 2)*
+
+<p align="right"><a href="#sql-data-analytics-project">↑ Back to top</a></p>
 
 ## 🛡️ Data Quality & Validation
 
@@ -415,9 +417,9 @@ Data coverage and date quality are examined in `03_date_range_exploration.sql` b
 | Bikes have sales before their recorded start date (in 2010 and in the first half of 2011; the earliest Bikes `start_date` is July 1, 2011). | `gold.fact_sales`, `gold.dim_products` | Flagged, not corrected. Either the sales records are overstated or `start_date` does not mark when a product was launched or first sold. Bike figures before July 2011 are treated with caution. 2010 is already excluded from trend analysis, but 2011, the baseline for growth comparisons, includes affected months. Evidence: [script 07](scripts/07_change_over_time_analysis.sql), Observation 7.3.1. |
 | Oldest customer is over 100 years old (birthdate 1916-02-10). | `gold.dim_customers` | Flagged. Age-based analysis should treat this birthdate with caution. |
 
-<p align="right"><a href="#sql-data-analytics-project">↑ Back to top</a></p>
+## ⚙️ Repository & Setup Guide
 
-## ⚙️ Repository Structure & Setup Guide
+### Repository Structure
 
 ```
 sql-data-analytics-project/
@@ -444,7 +446,7 @@ sql-data-analytics-project/
 
 ### Prerequisites
 
-Make sure the following are installed on your computer:
+Make sure the following are installed and working on your computer:
 
 - **Database:** [SQL Server 2022 Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads "Go to download page") (or later versions)
 - **Client tool:** [SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms "Go to download page")
@@ -477,17 +479,23 @@ Make sure the following are installed on your computer:
 
     ℹ️ **Note:** Ages and recency are calculated from the date you run the scripts, so these values will differ from the figures in the observations over time.
 
-## 🙌 Credits & Enhancements
+<p align="right"><a href="#sql-data-analytics-project">↑ Back to top</a></p>
+
+## ✨ Credits & Enhancements
 
 [![Built with Data With Baraa](https://img.shields.io/badge/Built_with-Data_With_Baraa-F5B301?style=for-the-badge)](https://github.com/DataWithBaraa/sql-data-analytics-project "Go to GitHub repository")
 
-This project follows the guided [SQL Data Analytics Project](https://github.com/DataWithBaraa/sql-data-analytics-project "Go to GitHub repository") from the [Data With Baraa SQL course](https://www.youtube.com/watch?v=6cJ5Ji8zSDg "Go to guided project on YouTube"), which provides the datasets and the overall design.
+This project follows the guided [SQL Data Analytics Project](https://github.com/DataWithBaraa/sql-data-analytics-project "Go to GitHub repository") from the [Data With Baraa SQL course](https://www.youtube.com/watch?v=6cJ5Ji8zSDg "Go to guided project on YouTube"), which provides the datasets and the overall design. As this was a learning exercise, I followed the business rules given in the course and applied my own business logic where they were silent.
 
 This repository contains revised versions of the guided SQL scripts. Beyond clarifying inline comments, the revisions address logic and edge-case issues, refine date sorting and decimal formatting, and add extra analytical queries, reconciliation checks, and structured business observations.
 
 All images inside `docs/` are mine except for the original project roadmap and the adapted version.
 
+The tables below group the revisions into **corrections**, **refinements**, and **additions**, based on their effect on the guided scripts.
+
 ### Corrections
+
+*Fix errors in the guided version that produced wrong results or misleading output, such as faulty logic, overlapping ranges, syntax slips, and inaccurate comments*
 
 | Script | Issue in the guided version | Revision |
 |--------|-----------------------------|----------|
@@ -499,6 +507,8 @@ All images inside `docs/` are mine except for the original project roadmap and t
 
 ### Refinements
 
+*Leave the original logic intact but improve how results are sorted, labeled, numbered, or formatted*
+
 | Script | Issue in the guided version | Revision |
 |--------|-----------------------------|----------|
 | [07](scripts/07_change_over_time_analysis.sql) | Month labels from `FORMAT(order_date, 'yyyy-MMM')` were sorted alphabetically (2011-Apr, 2011-Aug, 2011-Dec, and so on) | Results are grouped and sorted by `DATETRUNC(MONTH, ...)` so that rows appear chronologically |
@@ -508,6 +518,8 @@ All images inside `docs/` are mine except for the original project roadmap and t
 | [12](scripts/12_report_customers.sql), [13](scripts/13_report_products.sql) | Averages (order value, monthly spend, order revenue, monthly revenue) were divided without decimal handling | Calculated with `1.0 *` and cast to `DECIMAL(18, 2)` |
 
 ### Extensions
+
+*Add new material the guided version did not include: extra queries, reconciliation checks, and business observations*
 
 | Script | Addition |
 |--------|----------|
@@ -526,9 +538,9 @@ All images inside `docs/` are mine except for the original project roadmap and t
 
 This project is licensed under the [MIT License](LICENSE). The original copyright notice from the source project is retained alongside mine.
 
-## 👨‍💻 About Me
+## 👩🏻‍💻 About Me
 
-I am **Czarks**, an analytics professional with over a decade of experience using organizational data to understand and solve operational problems in banking and government. I am expanding my toolkit to include modern data tools such as SQL, and I am targeting BI and analytics engineering roles. I enjoy turning raw, messy data into clean, business-ready insights.
+I am **Czarks**, an analytics professional with over a decade of experience in banking, finance, and government, turning messy data into decisions people trust. I am exploring **analytics engineering** and expanding my toolkit to include modern data tools.
 
 - **GitHub:** [@czarks-dataworks](https://github.com/czarks-dataworks)
 - **LinkedIn:** [Czarina Besares](https://www.linkedin.com/in/czarinabesares/)
