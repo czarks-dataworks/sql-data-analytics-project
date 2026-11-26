@@ -268,7 +268,7 @@ SELECT
     COUNT(DISTINCT customer_key) AS total_customers,
     SUM(sales_amount) AS total_sales,
     SUM(quantity) AS total_quantity,
-    ROUND(AVG(CAST(sales_amount AS DECIMAL(18, 2)) / NULLIF(quantity, 0)),1)
+	CAST(1.0 * AVG(sales_amount / NULLIF(quantity, 0)) AS DECIMAL(18, 2))
         AS avg_selling_price
 FROM base_query
 GROUP BY
