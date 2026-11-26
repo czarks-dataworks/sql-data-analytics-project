@@ -10,7 +10,7 @@
 &emsp; 💻 [Output Examples](#-output-examples) \
 &emsp; 📈 [Key Business Findings & Recommendations](#-key-business-findings--recommendations) \
 &emsp; 🛡️ [Data Quality & Validation](#️-data-quality--validation) \
-&emsp; ⚙️ [Repository Structure & Setup Guide](#️-repository-structure--setup-guide) \
+&emsp; ⚙️ [Repository & Setup Guide](#️-repository--setup-guide) \
 &emsp; ✨ [Credits & Enhancements](#-credits--enhancements) \
 &emsp; 📜 [License](#-license) \
 &emsp; 👩🏻‍💻 [About Me](#-about-me) 
@@ -334,7 +334,7 @@ Together with the Customer Report, the Product Report is the culmination of this
 
 ## 📈 Key Business Findings & Recommendations
 
-> **Caveat:** Because this project centers on exploratory and advanced SQL analytics—and the guided project calls for high-level business insights rather than full operational diagnostics—these findings highlight clear patterns and initial leads rather than final root causes. Confirming exact drivers and alternative business explanations will require deeper investigation with operational data and stakeholder context.
+> **Caveat:** Because this project centers on exploratory and advanced SQL analytics—and the guided project calls for high-level business insights rather than full operational diagnostics—these findings highlight clear patterns and initial leads rather than final root causes. Confirming exact drivers and alternative business explanations will require a deeper examination of the data, together with operational and stakeholder context.
 
 **Overall assessment.** Across the three full years in the data (2011 to 2013), sales grew strongly but unevenly: they fell in 2012 and then more than doubled in 2013 – that year's total alone exceeded all earlier years combined. Revenue is concentrated in one category (Bikes) and in a rotating set of model lines, and most customers have a purchase history of less than 12 months. The business shows strong growth, but it depends heavily on a single category, a few leading models, and one strong year.
 
@@ -384,7 +384,7 @@ Each finding below is supported by observations in the SQL scripts, written in t
     - **Business implication:** December strength and a slow start to the year are likely patterns, but three years of data are too few to treat them as established. The pooled ranking is also weighted toward 2013, the largest year, and sales grew within 2013 itself (January 857,758 vs December 1,874,128), so part of the December high and early-year low may reflect growth rather than seasonality.
     - **Evidence:** `07_change_over_time_analysis.sql` (Observations 7.7, 7.8, and 7.10).
 
-### Business and Data Analysis Recommendations
+### Business & Data Analysis Recommendations
 
 1. **Reduce dependence on Bikes.** Set growth targets for Accessories and Clothing and track their share of sales over time. Both scaled quickly in 2013, so there is a base to build on. *(Finding 1)*
 
@@ -408,7 +408,7 @@ Data coverage and date quality are examined in `03_date_range_exploration.sql` b
 - Product cost-range counts add up to the total number of products (295).
 - Customer segment counts add up to the total number of customers (18,484).
 
-### Issues found and handled
+### Issues Found & Handled
 
 | Issue | Where | Handling |
 |-------|-------|----------|
