@@ -12,7 +12,7 @@
 &emsp; 🛡️ [Data Quality & Validation](#️-data-quality--validation) \
 &emsp; ⚙️ [Repository & Setup Guide](#️-repository--setup-guide) \
 &emsp; ✨ [Credits & Enhancements](#-credits--enhancements) \
-&emsp; 📜 [License](#-license) \
+&emsp; 📜 [Licenses](#-licenses) \
 &emsp; 👩🏻‍💻 [About Me](#-about-me) 
 
 💡 **Tip:** On the GitHub repository page, you can use the **Outline** button (☰) at the top right of this README to jump to any section.
@@ -534,9 +534,15 @@ The tables below group the revisions into **corrections**, **refinements**, and 
 | [09](scripts/09_performance_analysis.sql) | Category column added to the yearly product query, and a pivot-style product table for 2011 to 2013 with sales by year, yearly ranks, and year-over-year change flags (conditional aggregation) |
 | [11](scripts/11_data_segmentation.sql) | Reconciliation checks: product counts add up to 295, and customer segments add up to 18,484 after confirming that all customers have purchases |
 
-## 📜 License
+## 📜 Licenses
 
-This project is licensed under the [MIT License](LICENSE). The original copyright notice from the source project is retained alongside mine.
+This repository uses two licenses, depending on the type of material:
+
+- **SQL scripts** (`.sql` files): [MIT License](LICENSE)
+- **Documentation and visual assets** (this README, diagrams, charts, and screenshots of scripts and query results): [CC BY-NC-ND 4.0](LICENSE-DOCS.md). You may share them unmodified, for non-commercial purposes only, with attribution to Czarina Besares ([`czarks-dataworks`](https://github.com/czarks-dataworks)). You may not adapt or reuse them as your own.
+- **Third-party materials** (the roadmap image adapted from [Data with Baraa](https://github.com/DataWithBaraa/sql-data-analytics-project), and the sample dataset): MIT License, with the original copyright notice in [LICENSE-DOCS.md](LICENSE-DOCS.md).
+
+See [LICENSE](LICENSE) and [LICENSE-DOCS.md](LICENSE-DOCS.md) for the full terms.
 
 ## 👩🏻‍💻 About Me
 
