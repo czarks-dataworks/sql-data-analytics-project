@@ -124,7 +124,7 @@ The diagram above presents the project roadmap from the course, with minor modif
 
 ## 💻 Output Examples
 
-🔔 **Reminder:** SQL scripts can only run correctly after the **[full setup](#️-repository-structure--setup-guide)** is completed.
+🔔 **Reminder:** SQL scripts can only run correctly after the **[full setup](#️-repository--setup-guide)** is completed.
 
 <details>
 <summary><strong>A. Script 07 - Change-over-Time analysis (screenshots of SSMS)</strong> - <i>click to expand</i></summary>
