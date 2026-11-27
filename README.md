@@ -440,7 +440,8 @@ sql-data-analytics-project/
 │   ├── 12_report_customers.sql
 │   └── 13_report_products.sql
 ├── .gitignore
-├── LICENSE
+├── LICENSE                 # MIT License (SQL scripts and dataset)
+├── LICENSE-DOCS.md         # CC BY-NC-ND 4.0 (docs and visuals) + MIT notice (roadmaps)
 └── README.md
 ```
 
@@ -536,11 +537,13 @@ The tables below group the revisions into **corrections**, **refinements**, and 
 
 ## 📜 Licenses
 
-This repository uses two licenses, depending on the type of material:
+This repository uses two licenses, the MIT License and CC BY-NC-ND 4.0, depending on the type of material:
 
-- **SQL scripts** (`.sql` files): [MIT License](LICENSE)
-- **Documentation and visual assets** (this README, diagrams, charts, and screenshots of scripts and query results): [CC BY-NC-ND 4.0](LICENSE-DOCS.md). You may share them unmodified, for non-commercial purposes only, with attribution to Czarina Besares ([`czarks-dataworks`](https://github.com/czarks-dataworks)). You may not adapt or reuse them as your own.
-- **Third-party materials** (the roadmap image adapted from [Data with Baraa](https://github.com/DataWithBaraa/sql-data-analytics-project), and the sample dataset): MIT License, with the original copyright notice in [LICENSE-DOCS.md](LICENSE-DOCS.md).
+| Material | License | Remarks |
+|:---|:---|:---|
+| **SQL scripts** (`.sql` files) and the **sample dataset** | **MIT License** (LICENSE) | The notice carries the copyright of both Data With Baraa (the guided project and dataset) and myself (my revisions to the scripts). |
+| **Documentation and visual assets** (this README, diagrams, charts, and screenshots of scripts and query results, except the roadmap images) | **CC BY-NC-ND 4.0** (LICENSE-DOCS.md) | You may share them unmodified, for non-commercial purposes only, with attribution to Czarina Besares ([`czarks-dataworks`](https://github.com/czarks-dataworks)). You may not adapt or reuse them as your own. |
+| **Roadmap images** (the original from [Data With Baraa](docs/03_original_project_roadmap_by_data_with_baraa.png) and my [adapted version](docs/02_analytics_roadmap_adapted.png)) | **MIT License** (LICENSE-DOCS.md) | The notice carries the copyright of both Data With Baraa (the original roadmap image) and myself (my adapted version). |
 
 See [LICENSE](LICENSE) and [LICENSE-DOCS.md](LICENSE-DOCS.md) for the full terms.
 
