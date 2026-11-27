@@ -13,13 +13,13 @@
 &emsp; ⚙️ [Repository & Setup Guide](#️-repository--setup-guide) \
 &emsp; ✨ [Credits & Enhancements](#-credits--enhancements) \
 &emsp; 📜 [Licenses](#-licenses) \
-&emsp; 👩🏻‍💻 [About Me](#-about-me) 
+&emsp; 👩🏻‍💻 [About Me](#-about-me)
 
 💡 **Tip:** On the GitHub repository page, you can use the **Outline** button (☰) at the top right of this README to jump to any section.
 
 ## 📌 Overview
 
-This is an **exploratory data analysis (EDA)** and **advanced analytics reporting project** built on a retail business dataset using **Microsoft SQL Server (T-SQL)**. Analysis progresses from schema, data, and data-quality inspection to ranking, time-series, part-to-whole analysis,and segmentation, and culminates in the creation of two reusable reports designed for business intelligence (BI) use.
+This is an **exploratory data analysis (EDA)** and **advanced analytics reporting project** built on a retail business dataset using **Microsoft SQL Server (T-SQL)**. Analysis progresses from schema, data, and data-quality inspection to ranking, time-series, part-to-whole analysis, and segmentation, and culminates in the creation of two reusable reports designed for business intelligence (BI) use.
 
 <div align="center">
 
@@ -99,7 +99,7 @@ Created in this project (scripts 12 and 13):
 
 ## 🛣️ Analysis Roadmap
 
-[![Data Analytics roadmap diagram adapted from Data With Baraa and revised for this repository.](docs/02_analytics_roadmap_adapted.png)](docs/02_analytics_roadmap_adapted.png "View image file in this repository") 
+[![Data Analytics roadmap diagram adapted from Data With Baraa and revised for this repository.](docs/02_analytics_roadmap_adapted.png)](docs/02_analytics_roadmap_adapted.png "View image file in this repository") \
 *Source: Data With Baraa, with modifications*
 
 The diagram above presents the project roadmap from the course, with minor modifications for this repository: EDA placed on the left and Advanced Analytics on the right (view original diagram [here](docs/03_original_project_roadmap_by_data_with_baraa.png)). The table below outlines the analysis sequence, scripts, and key techniques used following the roadmap. Step 12 (Reporting) under Advanced Analytics covers the preparation of both scripts 12 and 13.
@@ -221,7 +221,7 @@ Product sales by year (2011-2013) with annual sales ranking (`rank_20...` column
 ℹ️ **Note:** This is one of the [extensions](#extensions "Go to subsection in this README") of this project, i.e. the query is my addition and is not included in the guided project.
 
 <details>
-<summary><strong>C. Script 13 - Product Report</strong><i> - click to expand</i></summary>
+<summary><strong>C. Script 13 - Product Report</strong> - <i>click to expand</i></summary>
 
 ```sql
 --------------------------------------------------------------------------------
@@ -334,9 +334,9 @@ Together with the Customer Report, the Product Report is the culmination of this
 
 ## 📈 Key Business Findings & Recommendations
 
-> **Caveat:** Because this project centers on exploratory and advanced SQL analytics—and the guided project calls for high-level business insights rather than full operational diagnostics—these findings highlight clear patterns and initial leads rather than final root causes. Confirming exact drivers and alternative business explanations will require a deeper examination of the data, together with operational and stakeholder context.
+> **Caveat:** Because this project centers on exploratory and advanced SQL analytics, and the guided project calls for high-level business insights rather than full operational diagnostics, these findings highlight clear patterns and initial leads rather than final root causes. Confirming exact drivers and alternative business explanations will require a deeper examination of the data, together with operational and stakeholder context.
 
-**Overall assessment.** Across the three full years in the data (2011 to 2013), sales grew strongly but unevenly: they fell in 2012 and then more than doubled in 2013 – that year's total alone exceeded all earlier years combined. Revenue is concentrated in one category (Bikes) and in a rotating set of model lines, and most customers have a purchase history of less than 12 months. The business shows strong growth, but it depends heavily on a single category, a few leading models, and one strong year.
+**Overall assessment.** Across the three full years in the data (2011 to 2013), sales grew strongly but unevenly: they fell in 2012 and then more than doubled in 2013. That year's total alone exceeded all earlier years combined. Revenue is concentrated in one category (Bikes) and in a rotating set of model lines, and most customers have a purchase history of less than 12 months. The business shows strong growth, but it depends heavily on a single category, a few leading models, and one strong year.
 
 Each finding below is supported by observations in the SQL scripts, written in the format *observation, evidence, implication*. The evidence (figures and query results) is in the referenced script, appearing after the query that produced it.
 
@@ -423,9 +423,9 @@ Data coverage and date quality are examined in `03_date_range_exploration.sql` b
 
 ```
 sql-data-analytics-project/
-├── datasets/                            # Database backup (DataWarehouse.bak)
-├── docs/                                # Diagrams and other project references
-├── scripts/                             # SQL analysis scripts
+├── datasets/               # Database backup (DataWarehouse.bak)
+├── docs/                   # Diagrams and other project references
+├── scripts/                # SQL analysis scripts
 │   ├── 01_database_exploration.sql
 │   ├── 02_dimensions_exploration.sql
 │   ├── 03_date_range_exploration.sql
