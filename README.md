@@ -13,7 +13,7 @@
 &emsp; ⚙️ [Repository & Setup Guide](#️-repository--setup-guide) \
 &emsp; ✨ [Credits & Enhancements](#-credits--enhancements) \
 &emsp; 📜 [Licenses](#-licenses) \
-&emsp; 👩🏻‍💻 [About Me](#-about-me)
+&emsp; 👩🏻‍💻 [About Me](#about-me)
 
 💡 **Tip:** On the GitHub repository page, you can use the **Outline** button (☰) at the top right of this README to jump to any section.
 
@@ -547,6 +547,7 @@ This repository uses two licenses, the MIT License and CC BY-NC-ND 4.0, dependin
 
 See [LICENSE](LICENSE) and [LICENSE-DOCS.md](LICENSE-DOCS.md) for the full terms.
 
+<a id="about-me"></a>
 ## 👩🏻‍💻 About Me
 
 I am **Czarks**, an analytics professional with over a decade of experience in banking, finance, and government, turning messy data into decisions people trust. I am exploring **analytics engineering** and expanding my toolkit to include modern data tools.
