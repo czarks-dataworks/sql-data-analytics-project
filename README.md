@@ -344,7 +344,7 @@ Each finding below is supported by observations in the SQL scripts, written in t
 
 1. **Revenue is concentrated in one category**
 
-    - **Finding:** Bikes account for about 96% of total sales. Accessories and Clothing together contribute about 3.5%, and Accessories contribute more than twice as much as Clothing. Bikes were the only category sold until 2012; Accessories and Clothing grew quickly after they first appeared, but from very small bases. Separately, by product count the catalog is weighted toward low-cost items.
+    - **Finding:** Bikes account for about 96% of total sales. Accessories and Clothing together contribute about 3.5%, and Accessories contribute more than twice as much as Clothing. Bikes were the only category sold before 2012; Accessories and Clothing grew quickly after they first appeared that year, but from very small bases. Separately, by product count the catalog is weighted toward low-cost items.
     - **Business implication:** Performance is driven almost entirely by Bikes. Neither of the smaller categories materially offsets that dependence, even after their rapid growth in 2013.
     - **Evidence:** `10_part_to_whole_analysis.sql` (Observations 10.1 and 10.2), `07_change_over_time_analysis.sql` (Observations 7.3 and 7.5), `11_data_segmentation.sql` (Observation 11.1).
 
@@ -492,11 +492,11 @@ This repository contains revised versions of the guided SQL scripts. Beyond clar
 
 All images inside `docs/` are mine except for the original project roadmap and the adapted version.
 
-The tables below group the revisions into **corrections**, **refinements**, and **additions**, based on their effect on the guided scripts.
+The tables below group the revisions into **corrections**, **refinements**, and **extensions**, based on their effect on the guided scripts.
 
 ### Corrections
 
-*Fix errors in the guided version that produced wrong results or misleading output, such as faulty logic, overlapping ranges, syntax slips, and inaccurate comments*
+*Fixed errors in the guided version that produced wrong results or misleading output, such as faulty logic, overlapping ranges, syntax slips, and inaccurate comments*
 
 | Script | Issue in the guided version | Revision |
 |--------|-----------------------------|----------|
@@ -508,7 +508,7 @@ The tables below group the revisions into **corrections**, **refinements**, and 
 
 ### Refinements
 
-*Leave the original logic intact but improve how results are sorted, labeled, numbered, or formatted*
+*Kept the original logic but improved how results are sorted, labeled, numbered, or formatted*
 
 | Script | Issue in the guided version | Revision |
 |--------|-----------------------------|----------|
@@ -520,7 +520,7 @@ The tables below group the revisions into **corrections**, **refinements**, and 
 
 ### Extensions
 
-*Add new material the guided version did not include: extra queries, reconciliation checks, and business observations*
+*Added new material the guided version did not include: extra queries, reconciliation checks, and business observations*
 
 | Script | Addition |
 |--------|----------|
@@ -528,12 +528,12 @@ The tables below group the revisions into **corrections**, **refinements**, and 
 | [01](scripts/01_database_exploration.sql) | Column metadata for `dim_products` and `fact_sales`, and a query for all columns of all tables |
 | [02](scripts/02_dimensions_exploration.sql) | Distinct values for marital status and gender, the earliest start date per category, and a category and subcategory overview |
 | [03](scripts/03_date_range_exploration.sql) | Date range per year, and a follow-up investigation of the NULL `order_date` rows (days from order to shipping, and whether affected orders have other dated rows) that supports the handling in [Data Quality & Validation](#️-data-quality--validation) |
+| [04](scripts/04_measures_exploration.sql), [11](scripts/11_data_segmentation.sql) | Reconciliation checks: product counts add up to 295, and customer segments add up to 18,484 after confirming that all customers have purchases |
 | [05](scripts/05_magnitude_analysis.sql) | Total customers by country with a grand total (`ROLLUP`), customers, orders, and sales by gender, and sales by country and gender |
 | [06](scripts/06_ranking_analysis.sql) | A CTE version of the ranking query, and subcategory added to the product rankings |
 | [07](scripts/07_change_over_time_analysis.sql) | Yearly summary including order counts, sales by year and category, month-of-year seasonality ranked across full years only (2011 to 2013), and a per-year seasonality check |
 | [08](scripts/08_cumulative_analysis.sql) | A single-query alternative to the subquery version |
 | [09](scripts/09_performance_analysis.sql) | Category column added to the yearly product query, and a pivot-style product table for 2011 to 2013 with sales by year, yearly ranks, and year-over-year change flags (conditional aggregation) |
-| [11](scripts/11_data_segmentation.sql) | Reconciliation checks: product counts add up to 295, and customer segments add up to 18,484 after confirming that all customers have purchases |
 
 ## 📜 Licenses
 
